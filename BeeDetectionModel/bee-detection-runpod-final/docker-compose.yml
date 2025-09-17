@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  bee-detection:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    mem_limit: 2g
+    memswap_limit: 3g
+    env_file:
+      - .env
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ~/.ssh/id_rsa_bee:/root/.ssh/id_rsa:ro
