@@ -1,0 +1,61 @@
+Common server commands
+Login : ssh hivemonitor@196.43.168.57
+Password: Ad@mnea321
+Copying from server
+
+ssh 
+rsync -avh --progress hivemonitor@196.43.168.57:/var/www/html/ademnea_website/MODULES/csv_data/*.csv /home/ltgwgeorge/Desktop/IoT-RA/forAnalytics/csv_files
+
+scp -v hivemonitor@196.43.168.57://home/ltgwgeorge/Desktop/IoT-RA/forAnalytics/beehive_reporting/ /home/ltgwgeorge/Desktop/IoT-RA/BeeDetectionModel/
+
+audio_path: /var/www/html/ademnea_website/public/hiveaudio
+
+Copying audio files
+##Prototype_Year-Month-Date yyyy-mm-dd
+rsync -avh --progress --include='*/' \
+  --include='1_2025-05-*.wav' \
+  --exclude='*' \
+  hivemonitor@196.43.168.57:/var/www/html/ademnea_website/public/hiveaudio/ \
+  /home/ltgwgeorge/Desktop/IoT-RA/forAnalytics/csv_files/JulyData/audio/
+  
+  
+ Copying vibration files
+  vibration_PrototypeNumber_Year-Month-*.csv
+rsync -avh --progress --include='*/' \
+  --include='vibration_1_2025-07-*.csv' \
+  --exclude='*' \
+  hivemonitor@196.43.168.57:/var/www/html/ademnea_website/public/hivevibration/ \
+  /home/ltgwgeorge/Desktop/IoT-RA/forAnalytics/csv_files/JulyData/vibrations
+
+
+Copying images 
+rsync -avh --progress --include='*/' \
+  --include='1_2025-01-*.jpg' \
+  --include='1_2025-02-*.jpg' \
+  --include='1_2025-03-*.jpg' \
+  --include='1_2025-04-*.jpg' \
+  --include='1_2025-05-*.jpg' \
+  --exclude='*' \
+  hivemonitor@196.43.168.57:/var/www/html/ademnea_website/public/hiveimage/ \
+  /home/ltgwgeorge/Desktop/IOT-RA/forAnalytics/DataRequest/hiveimage/
+
+rsync -avh --progress -e ssh \
+  --exclude='.git/' \
+  --exclude='bdetectionVenv/' \
+  --exclude='__pycache__/' \
+  --exclude='*.pyc' \
+  hivemonitor@196.43.168.57:/var/www/html/ademnea_website/MODULES/BeeDetectionModel/ \
+  /home/ltgwgeorge/Desktop/IoT-RA/BeeDetectionModel/tflite_server_model
+
+
+//Copying videos
+Copying images 
+rsync -avh --progress --include='*/' \
+  --include='1_2025-09-16_073139.mp4' \
+  --include='1_2025-09-16_073139.mp4' \
+  --include='1_2025-09-06_073139.mp4' \
+  --include='1_2025-09-01_120006.mp4' \
+  --include='1_2025-08-31_073148.mp4' \
+  --exclude='*' \
+  hivemonitor@196.43.168.57:/var/www/html/ademnea_website/public/hivevideo/ \
+  /home/ltgwgeorge/Desktop/IoT-RA/forAnalytics/hivevideo
