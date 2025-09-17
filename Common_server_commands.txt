@@ -1,6 +1,6 @@
 Common server commands
 Login : ssh hivemonitor@196.43.168.57
-Password: Ad@mnea321
+Password: ""
 Copying from server
 
 ssh 
